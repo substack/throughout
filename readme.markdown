@@ -36,6 +36,9 @@ The problem is that both `duplexer` and `.pipe()` will handle pause and resume
 in a mutually exclusive way that will cause the stream to hang indefinitely if a
 slow downstream consumer ever triggers a pause.
 
+If you try to use event-stream's .pipeline() function you will get the same
+problem.
+
 # methods
 
 ``` js
