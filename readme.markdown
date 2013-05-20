@@ -1,18 +1,35 @@
 # throughout
 
-Apply a through stream to the output side of a through stream.
+Apply a through stream to the output side of another through stream.
 
 # example
 
 ``` js
-var duplexer = require('duplexer');
+var through = require('through');
+var throughout = require('throughput');
 
-function applyTransform (filterStream) {
-    var output = t
-    input.pipe(output);
-    var dup = duplexer(input, output);
-    return dup;
-}
+var doubler = through(function (buf) {
+    var dbuf = new Buffer(buf.length * 2);
+    for (var i = 0; i < dbuf.length; i++) {
+        dbuf[i] = buf[Math.floor(i/2)];
+    }
+    this.queue(dbuf);
+});
+
+var counter = through(
+    function (buf) {
+        this._count = (this._count || 0) + buf.length;
+    },
+    function () {
+        this.queue(this._count + '\n');
+        this.queue(null);
+    }
+);
+
+process.stdin
+    .pipe(throughout(doubler, counter))
+    .pipe(process.stdout)
+;
 ```
 
 # rationale
