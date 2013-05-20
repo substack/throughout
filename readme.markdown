@@ -1,6 +1,7 @@
 # throughout
 
-Apply a through stream to the output side of another through stream.
+Apply a through stream to the output side of another through stream,
+preserving the first stream as input in the returned stream.
 
 # example
 
