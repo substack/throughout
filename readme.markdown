@@ -3,6 +3,10 @@
 Apply a through stream to the output side of another through stream,
 preserving the first stream as input in the returned stream.
 
+[![build status](https://secure.travis-ci.org/substack/throughout.png)](http://travis-ci.org/substack/throughout)
+
+[![browser support](https://ci.testling.com/substack/throughout.png)](http://ci.testling.com/substack/throughout)
+
 # example
 
 ``` js
