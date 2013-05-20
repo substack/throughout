@@ -11,7 +11,7 @@ preserving the first stream as input in the returned stream.
 
 ``` js
 var through = require('through');
-var throughout = require('throughput');
+var throughout = require('throughout');
 
 var doubler = through(function (buf) {
     var dbuf = new Buffer(buf.length * 2);
