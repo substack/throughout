@@ -1,4 +1,5 @@
 var duplexer = require('duplexer');
+var through = require('through');
 
 module.exports = function (a, b) {
     a.pipe(through(
